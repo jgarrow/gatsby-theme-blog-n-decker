@@ -1,9 +1,16 @@
 import React from "react"
-import { Styled, css, ThemeProvider, ColorMode } from "theme-ui"
+import {
+  Styled,
+  css,
+  ThemeProvider,
+  ColorMode,
+  InitializeColorMode,
+} from "theme-ui"
 
 import PostFooter from "gatsby-theme-blog/src/components/post-footer"
 import Layout from "gatsby-theme-blog/src/components/layout"
 import SEO from "gatsby-theme-blog/src/components/seo"
+// import { FacebookProvider, Comments } from "react-facebook"
 
 import blogTheme from "gatsby-theme-blog/src/gatsby-plugin-theme-ui/index"
 import waves from "./waves"
@@ -21,9 +28,18 @@ const Post = ({
   previous,
   next,
 }) => {
+  if (previous) {
+    previous.slug = `${previous.slug}`
+  }
+
+  if (next) {
+    next.slug = `${next.slug}`
+  }
+
   return (
     <ThemeProvider theme={deepmerge(blogTheme, { styles: { waves } })}>
-      <ColorMode />
+      {/* <ColorMode /> */}
+      <InitializeColorMode />
       <Layout location={location} title={title}>
         <SEO title={post.title} description={post.excerpt} />
         <main>
@@ -38,6 +54,9 @@ const Post = ({
             {post.date}
           </Styled.p>
           <Body body={post.body} />
+          {/* <FacebookProvider appId="123456789">
+            <Comments href="http://www.facebook.com" />
+          </FacebookProvider> */}
         </main>
         <PostFooter {...{ previous, next }} />
       </Layout>
