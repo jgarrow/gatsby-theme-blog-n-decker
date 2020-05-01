@@ -16,7 +16,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
+    allMdxBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
       edges {
         node {
           id
@@ -46,13 +46,13 @@ export const pageQuery = graphql`
 `
 
 export default ({ data, location }) => {
-  const { site, allBlogPost, allDeck } = data
+  const { site, allMdxBlogPost, allDeck } = data
   const { title: siteTitle, social: socialLinks } = site.siteMetadata
-  const posts = allBlogPost.edges.map(e => e.node)
-  const decks = allDeck.edges.map(e => e.node)
+  const posts = allMdxBlogPost.edges.map((e) => e.node)
+  const decks = allDeck.edges.map((e) => e.node)
 
-  const deckposts = posts.map(post => {
-    const deck = decks.find(deck => deck.parent.id === post.parent.id)
+  const deckposts = posts.map((post) => {
+    const deck = decks.find((deck) => deck.parent.id === post.parent.id)
     return {
       title: post.title || deck.title || deck.slug,
       excerpt: post.excerpt,
