@@ -5,6 +5,11 @@ import {
   ThemeProvider,
   ColorMode,
   InitializeColorMode,
+  Label,
+  Input,
+  Textarea,
+  Button,
+  Box,
 } from "theme-ui"
 
 import PostFooter from "gatsby-theme-blog/src/components/post-footer"
@@ -36,6 +41,10 @@ const Post = ({
     next.slug = `${next.slug}`
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
+
   return (
     <ThemeProvider theme={deepmerge(blogTheme, { styles: { waves } })}>
       {/* <ColorMode /> */}
@@ -53,11 +62,19 @@ const Post = ({
           >
             {post.date}
           </Styled.p>
-          <Body body={post.body} />
+          <Body body={post.body} /> hello123
           {/* <FacebookProvider appId="123456789">
             <Comments href="http://www.facebook.com" />
           </FacebookProvider> */}
+          <Box as="form" onSubmit={handleSubmit}>
+            <Label htmlFor="name">Name</Label>
+            <Input name="name" mb={3} />
+            <Label htmlFor="comment">Comment</Label>
+            <Textarea name="comment" rows="6" mb={3} />
+            <Button>Submit</Button>
+          </Box>
         </main>
+
         <PostFooter {...{ previous, next }} />
       </Layout>
     </ThemeProvider>
