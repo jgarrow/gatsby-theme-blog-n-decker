@@ -5,6 +5,7 @@ comments:
   branch: master
   filename: "comment{@timestamp}"
   path: "/comments"
+  commitMessage: "New comment"
   reCaptcha:
     enable: false
     siteKey: ""

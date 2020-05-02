@@ -53,18 +53,25 @@ const Post = ({
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const formdata = new FormData()
-    formdata.set("fields[name]", comment.name)
-    formdata.set("fields[message]", comment.message)
+    // extract form data
+    const formdata = new FormData(e.target)
+
+    // convert FormData to json object
+    // SOURCE: https://stackoverflow.com/a/46774073
     const json = {}
-    formdata.forEach((value, prop) => (json[prop] = value))
+    formdata.forEach(function (value, prop) {
+      json[prop] = value
+    })
+
+    // convert json to urlencoded query string
+    // SOURCE: https://stackoverflow.com/a/37562814 (comments)
     const formBody = Object.keys(json)
       .map(
         (key) => encodeURIComponent(key) + "=" + encodeURIComponent(json[key])
       )
       .join("&")
 
-    // in the repo, create a folder named 'comments'
+    // POST the request to Staticman's API endpoint
     const response = await fetch(
       "https://deck-n-blog-comments.herokuapp.com/v2/entry/jgarrow/gatsby-theme-deck-n-blog/master/comments/",
       {
@@ -73,7 +80,18 @@ const Post = ({
         body: formBody,
       }
     )
-    console.log(response)
+      .then((res) => {
+        // reset form
+        document.getElementById("comment-form").reset()
+        // display success message
+        document.getElementById("success").style.display = "block"
+      })
+      .catch((error) => {
+        console.log(error)
+        document.getElementById("failure").style.display = "block"
+      })
+
+    console.log("response: ", response)
   }
 
   console.log(
@@ -103,16 +121,33 @@ const Post = ({
         {/* <FacebookProvider appId="123456789">
             <Comments href="http://www.facebook.com" />
           </FacebookProvider> */}
-        <Box as="form" onSubmit={handleSubmit}>
-          <Label htmlFor="name">Name</Label>
-          <Input name="name" mb={3} onChange={handleChange} />
-          <Label htmlFor="comment">Comment</Label>
-          <Textarea name="comment" rows="6" mb={3} onChange={handleChange} />
+        <Box
+          as="form"
+          onSubmit={handleSubmit}
+          // method="POST"
+          // action="https://deck-n-blog-comments.herokuapp.com/v2/entry/jgarrow/gatsby-theme-deck-n-blog/master/comments/"
+        >
+          <Label htmlFor="fields[name]">Name</Label>
+          <Input
+            name="name"
+            type="text"
+            mb={3}
+            onChange={handleChange}
+            required
+          />
+          <Label htmlFor="message">Comment</Label>
+          <Textarea
+            name="message"
+            rows="6"
+            mb={3}
+            onChange={handleChange}
+            required
+          />
           <div
             className="g-recaptcha"
             data-sitekey="6Ld_PfEUAAAAAJQX_kD8eYwSI53qJPcFfE9M4Vpv"
           ></div>
-          <Button>Submit</Button>
+          <Button type="submit">Submit</Button>
         </Box>
       </main>
       <PostFooter {...{ previous, next }} />
