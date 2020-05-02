@@ -66,7 +66,7 @@ const Post = ({
 
     // in the repo, create a folder named 'comments'
     const response = await fetch(
-      "https://deck-n-blog-comments.herokuapp.com/v2/entry/jgarrow/gatsby-theme-deck-n-blog/demo/master/comments/",
+      "https://deck-n-blog-comments.herokuapp.com/v2/entry/jgarrow/gatsby-theme-deck-n-blog/master/comments/",
       {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },

@@ -10,7 +10,7 @@
 # https://staticman-travisdownsio.herokuapp.com/v2/entry/travisdowns/travisdowns.github.io/master/comments
 # staticman_url: https://${bridge_app_name}.herokuapp.com/v2/entry/${github-username}/${blog-repo}/master/comments
 
-staticman_url: https://deck-n-blog-comments.herokuapp.com/v2/entry/jgarrow/gatsby-theme-deck-n-blog/demo/master/comments
+staticman_url: https://deck-n-blog-comments.herokuapp.com/v2/entry/jgarrow/gatsby-theme-deck-n-blog/master/comments
 reCaptcha:
   siteKey: ""
   secret: ""
