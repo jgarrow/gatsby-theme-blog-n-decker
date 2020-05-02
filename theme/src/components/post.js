@@ -55,7 +55,7 @@ const Post = ({
 
     const formdata = new FormData()
     formdata.set("fields[name]", comment.name)
-    formdata.set("fields[message]", comment.essage)
+    formdata.set("fields[message]", comment.message)
     const json = {}
     formdata.forEach((value, prop) => (json[prop] = value))
     const formBody = Object.keys(json)
