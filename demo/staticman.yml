@@ -1,7 +1,0 @@
-comments:
-  name: "Blog 'n Decker Blog Comments'"
-  requiredFields: ["name", "message"]
-  reCaptcha:
-    enable: false
-    # siteKey:
-    # secret:
