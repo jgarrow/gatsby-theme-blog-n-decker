@@ -25,14 +25,14 @@ import { Helmet } from "react-helmet"
 
 function getIntro(children) {
   const introElement = React.Children.toArray(children).find(
-    (c) => c.props && c.props.originalType === Intro
+    c => c.props && c.props.originalType === Intro
   )
   return introElement && introElement.props && introElement.props.children
 }
 
 function getContent(children) {
   const contentElement = React.Children.toArray(children).find(
-    (c) => c.props && c.props.originalType === Content
+    c => c.props && c.props.originalType === Content
   )
   return React.createElement(
     "div",
@@ -59,9 +59,9 @@ const Wrapper = ({ children, theme = {}, ...props }) => {
     const contents = slides.map(getContent)
 
     const slideElements = slides
-      .map((slide) =>
+      .map(slide =>
         slide.filter(
-          (c) =>
+          c =>
             !c.props ||
             c.props.originalType !== Intro ||
             c.props.originalType !== Content

@@ -7,16 +7,16 @@
 module.exports = {
   siteMetadata: {
     title: `My Talks`,
-    author: `Name Placeholder`,
+    author: `Janessa Garrow`,
     description: `Description placeholder`,
     social: [
       {
         name: `twitter`,
-        url: `https://twitter.com/pomber`,
+        url: `https://twitter.com/janessagarrow`,
       },
       {
         name: `github`,
-        url: `https://github.com/pomber/gatsby-theme-deck-n-blog`,
+        url: `https://github.com/jgarrow/gatsby-theme-deck-n-blog`,
       },
     ],
   },
@@ -26,7 +26,7 @@ module.exports = {
       options: {
         contentPath: "decks",
         blogBasePath: "posts",
-        // decksBasePath: "deck",
+        decksBasePath: "/slides",
       },
     },
   ],

@@ -17,7 +17,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMdxBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
+    allBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
       edges {
         node {
           id
@@ -25,8 +25,10 @@ export const pageQuery = graphql`
           slug
           title
           date(formatString: "MMMM DD, YYYY")
-          parent {
-            id
+          ... on MdxBlogPost {
+            parent {
+              id
+            }
           }
         }
       }
@@ -47,9 +49,9 @@ export const pageQuery = graphql`
 `
 
 export default ({ data, location }) => {
-  const { site, allMdxBlogPost, allDeck } = data
+  const { site, allBlogPost, allDeck } = data
   const { title: siteTitle, social: socialLinks } = site.siteMetadata
-  const posts = allMdxBlogPost.edges.map((e) => e.node)
+  const posts = allBlogPost.edges.map((e) => e.node)
   const decks = allDeck.edges.map((e) => e.node)
 
   const deckposts = posts.map((post) => {
