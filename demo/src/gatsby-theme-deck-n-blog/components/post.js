@@ -1,23 +1,11 @@
 import React from "react"
-import {
-  Styled,
-  css,
-  ThemeProvider,
-  ColorMode,
-  InitializeColorMode,
-} from "theme-ui"
-
-import { Label, Input, Textarea, Button, Box } from "@theme-ui/components"
+import { Styled, css } from "theme-ui"
 
 import PostFooter from "gatsby-theme-blog/src/components/post-footer"
 import Layout from "gatsby-theme-blog/src/components/layout"
 import SEO from "gatsby-theme-blog/src/components/seo"
-// import { FacebookProvider, Comments } from "react-facebook"
 
-import blogTheme from "gatsby-theme-blog/src/gatsby-plugin-theme-ui/index"
-import waves from "gatsby-theme-deck-n-blog/src/components/waves"
 import Body from "gatsby-theme-deck-n-blog/src/components/body"
-import deepmerge from "deepmerge"
 
 const Post = ({
   data: {
@@ -38,16 +26,7 @@ const Post = ({
     next.slug = `${next.slug}`
   }
 
-  // console.log(
-  //   "deepmerge(blogTheme, { styles: { waves } }): ",
-  //   deepmerge(blogTheme, { styles: { waves } })
-  // )
-
   return (
-    // <ThemeProvider theme={deepmerge(blogTheme, { styles: { waves } })}>
-    // {/* <ThemeProvider theme={blogTheme}> */}
-    // {/* <ColorMode /> */}
-    // <InitializeColorMode />
     <Layout location={location} title={title}>
       <SEO title={post.title} description={post.excerpt} />
       <main>
@@ -62,13 +41,9 @@ const Post = ({
           {post.date} hello
         </Styled.p>
         <Body body={post.body} />
-        {/* <FacebookProvider appId="123456789">
-            <Comments href="http://www.facebook.com" />
-          </FacebookProvider> */}
       </main>
       <PostFooter {...{ previous, next }} />
     </Layout>
-    // </ThemeProvider>
   )
 }
 

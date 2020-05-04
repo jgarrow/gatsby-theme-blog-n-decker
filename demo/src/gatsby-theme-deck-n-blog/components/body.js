@@ -1,20 +1,17 @@
 /** @jsx jsx */
+import { jsx, ThemeProvider, useThemeUI, InitializeColorMode } from "theme-ui"
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+
 import {
   Intro,
   Content,
 } from "gatsby-theme-deck-n-blog/src/components/placeholders"
+
 import splitSlides from "gatsby-theme-mdx-deck/src/split-slides"
 import Slide from "gatsby-theme-mdx-deck/src/components/slide"
 import Zoom from "gatsby-theme-mdx-deck/src/components/zoom"
-import {
-  jsx,
-  ThemeProvider,
-  useThemeUI,
-  InitializeColorMode,
-  useColorMode,
-} from "theme-ui"
+
 import Wave from "gatsby-theme-waves/src/components/wave"
 import waves from "gatsby-theme-deck-n-blog/src/components/waves"
 import BarScroller from "gatsby-theme-waves/src/components/bar-scroller"
@@ -42,7 +39,6 @@ function getContent(children) {
 }
 
 const GoogleFont = ({ theme }) => {
-  console.log("googleFont theme: ", theme)
   if (!theme.googleFont) return false
   return (
     <Helmet>
@@ -52,8 +48,6 @@ const GoogleFont = ({ theme }) => {
 }
 
 const Wrapper = ({ children, theme = {}, ...props }) => {
-  console.log("wrapper theme: ", theme)
-
   function childrenToColumns(children) {
     const slides = splitSlides({ children })
     const contents = slides.map(getContent)
@@ -115,7 +109,7 @@ function DeckSticker({ steps, progress, variant, currentStep }) {
 const Body = ({ body }) => {
   const context = useThemeUI()
   const { theme } = context
-  console.log(deepmerge(theme, { styles: { waves } }))
+
   return (
     <ThemeProvider theme={deepmerge(theme, { styles: { waves } })}>
       <MDXRenderer components={{ wrapper: Wrapper }}>{body}</MDXRenderer>

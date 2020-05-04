@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-
 import Home from "../components/home"
 
 // TODO shadow blog/templates/posts

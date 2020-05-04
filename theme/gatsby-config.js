@@ -1,6 +1,6 @@
 module.exports = ({
   contentPath = "decks",
-  blogBasePath = "posts",
+  blogBasePath = "/posts",
   decksBasePath,
 }) => ({
   plugins: [
