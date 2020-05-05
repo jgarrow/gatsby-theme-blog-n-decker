@@ -51,17 +51,23 @@ const Wrapper = ({ children, theme = {}, ...props }) => {
         slide.filter(
           (c) =>
             !c.props ||
-            c.props.originalType !== Intro ||
-            c.props.originalType !== Content
+            (c.props.originalType !== Intro && c.props.originalType !== Content)
         )
       )
-      .map((slide, i) => (
-        <Fragment key={i}>
-          <Zoom zoom={1} ratio={16 / 9}>
-            <Slide slide={slide} theme={theme} preview />
-          </Zoom>
-        </Fragment>
-      ))
+      .map((filteredSlide, i) => {
+        // if a slide has a Zoom component with a value prop provided, set the Zoom zoom prop to that value, otherwise set it to 1
+        const zoomObj = filteredSlide.find(
+          (slideObj) => slideObj.props.mdxType === "Zoom"
+        )
+
+        return (
+          <Fragment key={i}>
+            <Zoom zoom={zoomObj ? zoomObj.props.value : 1} ratio={16 / 9}>
+              <Slide slide={filteredSlide} theme={theme} preview />
+            </Zoom>
+          </Fragment>
+        )
+      })
     return [slideElements, contents]
   }
 
