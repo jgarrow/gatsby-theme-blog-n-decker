@@ -1,1 +1,1 @@
-export { Intro, Content, Zoom } from "./src/components/placeholders"
+export { Intro, Content } from "./src/components/placeholders"
