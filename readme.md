@@ -19,8 +19,8 @@ To use this theme in your Gatsby sites, follow these instructions:
 
    ```js
    module.exports = {
-     plugins: ["gatsby-theme-deck-n-blog"]
-   };
+     plugins: ["gatsby-theme-deck-n-blog"],
+   }
    ```
 
 1. Create a deck in `decks/my-deck.mdx`
@@ -31,7 +31,7 @@ To use this theme in your Gatsby sites, follow these instructions:
    date: 1986-02-20
    ---
 
-   import { Intro, Content } from "gatsby-theme-deck-n-blog"
+   import { Intro, Content, Zoom } from "gatsby-theme-deck-n-blog"
 
    <Intro>
 
@@ -51,9 +51,13 @@ To use this theme in your Gatsby sites, follow these instructions:
 
    # Slide 2
 
+   <Zoom value={1.2}/>
+
    <Content>
 
    This will appear in the blog post together with the slide 2
+
+   The Zoom value determines how "zoomed in" this slide will be on the blog post page
 
    </Content>
    ```

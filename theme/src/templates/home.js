@@ -2,9 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 import Home from "../components/home"
 
-// TODO shadow blog/templates/posts
-// TODO shadow blog/templates/decks
-
 export const pageQuery = graphql`
   {
     site {
