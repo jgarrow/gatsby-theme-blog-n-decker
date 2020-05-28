@@ -1,4 +1,3 @@
 [build]
-  base = "demo"
-  command = "yarn build"
-  publish = "/public"
+  command = "yarn workspace demo build"
+  publish = "demo/public"
