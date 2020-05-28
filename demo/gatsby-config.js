@@ -8,7 +8,7 @@ module.exports = {
   siteMetadata: {
     title: `My Talks`,
     author: `Janessa Garrow`,
-    description: `Description placeholder`,
+    description: `A home for both your blog posts and slide decks from your talks and presentations`,
     social: [
       {
         name: `twitter`,
