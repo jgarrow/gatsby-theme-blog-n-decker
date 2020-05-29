@@ -6,12 +6,12 @@ You write the MDX for your [mdx-deck](https://github.com/jxnblk/mdx-deck)s, and 
 
 To use this theme in your Gatsby sites, follow these instructions:
 
-1. Init your Gatsby site (install the version of gatsby-theme-deck-n-blog from this repo, not the one published on npm)
+1. Init your Gatsby site. Install the version of gatsby-theme-deck-n-blog from this repo, not the one published on npm. Since `master` has the demo repo in it as well, install the `theme` branch that excludes `demo`.
 
    ```sh
    mkdir my-gastby-site
    cd my-gastby-site
-   npm install --save react react-dom gatsby jgarrow/gatsby-theme-deck-n-blog#master
+   npm install --save react react-dom gatsby jgarrow/gatsby-theme-deck-n-blog#theme
    npm init -y
    ```
 
