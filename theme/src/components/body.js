@@ -89,8 +89,20 @@ const Wrapper = ({ children, theme = {}, ...props }) => {
 function DeckSticker({ steps, progress, variant, currentStep, ...rest }) {
   const prevIndex = Math.floor(progress)
   const nextIndex = prevIndex + 1
+
+  const deckTheme = {
+    ...decksTheme,
+    styles: {
+      ...decksTheme.styles,
+      Slide: {
+        fontFamily: 'body',
+        fontSize: [2, 3, 4, 5],
+      },
+    }
+  }
+
   return (
-    <ThemeProvider theme={decksTheme}>
+    <ThemeProvider theme={deckTheme}>
       <div sx={{ variant: `styles.waves.${variant}.StickerContainer` }}>
         <div sx={{ variant: `styles.waves.${variant}.Sticker` }}>
           <div
