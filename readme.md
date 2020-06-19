@@ -6,16 +6,16 @@ You write the MDX for your [mdx-deck](https://github.com/jxnblk/mdx-deck)s, and 
 
 To use this theme in your Gatsby sites, follow these instructions:
 
-1. Init your Gatsby site
+1. Init your Gatsby site. Install the version of gatsby-theme-deck-n-blog from this repo, not the one published on npm. Since `master` has the demo repo in it as well, install the `theme` branch that excludes `demo`.
 
    ```sh
    mkdir my-gastby-site
    cd my-gastby-site
-   npm install --save react react-dom gatsby gatsby-theme-deck-n-blog
+   npm install --save react react-dom gatsby jgarrow/gatsby-theme-deck-n-blog#theme
    npm init -y
    ```
 
-1. Create `gatsby-config.js`:
+2. Create `gatsby-config.js`:
 
    ```js
    module.exports = {
@@ -23,7 +23,7 @@ To use this theme in your Gatsby sites, follow these instructions:
    }
    ```
 
-1. Create a deck in `decks/my-deck.mdx`
+3. Create a deck in `decks/my-deck.mdx`
 
    ```md
    ---
@@ -57,15 +57,15 @@ To use this theme in your Gatsby sites, follow these instructions:
 
    This will appear in the blog post together with the slide 2
 
-   The Zoom value determines how "zoomed in" this slide will be on the blog post page
+   The Zoom value determines how "zoomed in" this slide will be on the blog post page. The default value is 1.
 
    </Content>
    ```
 
-1. **Create another deck** (yes, you need to create at least two decks!) in `decks/another-deck.mdx`
+4. **Create another deck** (yes, you need to create at least two decks!) in `decks/another-deck.mdx`
 
-1. Start your site
+5. Start your site
 
    ```sh
-   npx gatsby develop
+   gatsby develop
    ```
